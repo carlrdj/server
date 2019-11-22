@@ -34,14 +34,3 @@ httpServer.listen(80, () => {
 const server = httpsServer.listen(443, () => {
 	console.log('HTTPS Server running on port 443');
 });
-
-const io = require('socket.io')(server);
-
-io.on('connection', function(socket) {
-  socket.on('CONNECTION', function(data) {
-    io.emit('CONNECT', socket.id)
-  });
-  socket.on('SEND_MESSAGE', function(data) {
-      io.emit('MESSAGE', data)
-  });
-});
